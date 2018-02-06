@@ -16,7 +16,13 @@ namespace CodeKata
 
             Console.WriteLine(string.Join(", ", numbers));
             Console.WriteLine($"Location of {numberToSearch} is {location}");
-            
+        }
+
+        public void Kata04()
+        {
+            var parser = new WeatherParser();
+            var day = parser.getDayWithSmallestSpread();
+            Console.WriteLine($"The day with the smallest temperature spread is: {day}");
         }
     }
 }
