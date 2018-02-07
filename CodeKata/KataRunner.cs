@@ -20,13 +20,13 @@ namespace CodeKata
 
         public void Kata04A()
         {
-            var day = WeatherParser.GetDayWithSmallestSpread();
+            var day = WeatherParser.GetDayWithSmallestSpread("/Users/akshaykhot/workspace/craftsmanship/CodeKata/CodeKata/Resources/weather.txt");
             Console.WriteLine($"The day with the smallest temperature spread is: {day}");   
         }
 
         public void Kata04B()
         {
-            var team = FootballParser.GetTeamWithLowestDifference();
+            var team = FootballParser.GetTeamWithLowestDifference("/Users/akshaykhot/workspace/craftsmanship/CodeKata/CodeKata/Resources/football.txt");
             Console.WriteLine($"The team with the lowest goal difference is: {team}");
         }
         

@@ -7,37 +7,31 @@ namespace CodeKata.Katas
 {
     public static class WeatherParser
     {
-        public static string GetDayWithSmallestSpread()
+        public static string GetDayWithSmallestSpread(string path)
         {
-            var pattern = @"\s+";
-            
-            var lines = File.ReadLines("/Users/akshaykhot/workspace/craftsmanship/CodeKata/CodeKata/Resources/weather.txt").Skip(2);
-            lines = lines.Take(lines.Count() - 1);
-            
-            var smallestSpread = int.MaxValue;
             var dayWithSmallestSpread = "";
+
+            var lines = Parser.ReadLines(path);
+            
+            var smallestSpread = int.MaxValue;  
+            
             foreach (var line in lines)
             {
-                var result = Regex.Split(line, pattern);
-                var maxT = GetTemp(result[2]);
-                var minT = GetTemp(result[3]);
-
-                var spread = maxT - minT;
+                if (Parser.IsInvalidLine(line)) continue;
+                
+                var tokens = Parser.GetTokens(line);
+                var spread = Parser.GetDifference(tokens[2], tokens[3]);
+                
                 if (spread < smallestSpread)
                 {
                     smallestSpread = spread;
-                    dayWithSmallestSpread = result[1];
+                    dayWithSmallestSpread = tokens[1];
                 }
             }
 
             return dayWithSmallestSpread;
         }
 
-        private static int GetTemp(string temp)
-        {
-            var strTemp = temp.Replace("*", "");
-            var numtemp = int.Parse(strTemp);
-            return numtemp;
-        }
+        
     }
 }

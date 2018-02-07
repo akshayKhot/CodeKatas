@@ -10,6 +10,7 @@ namespace CodeKata
         static void Main(string[] args)
         {
             Runner = new KataRunner();
+            Runner.Kata04A();
             Runner.Kata04B();
         }
     }
