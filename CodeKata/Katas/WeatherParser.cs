@@ -5,22 +5,22 @@ using System.Text.RegularExpressions;
 
 namespace CodeKata.Katas
 {
-    public class WeatherParser
+    public static class WeatherParser
     {
-        public string getDayWithSmallestSpread()
+        public static string GetDayWithSmallestSpread()
         {
             var pattern = @"\s+";
-            // Read the file
+            
             var lines = File.ReadLines("/Users/akshaykhot/workspace/craftsmanship/CodeKata/CodeKata/Resources/weather.txt").Skip(2);
             lines = lines.Take(lines.Count() - 1);
             
-            var smallestSpread = Int32.MaxValue;
-            string dayWithSmallestSpread = "";
+            var smallestSpread = int.MaxValue;
+            var dayWithSmallestSpread = "";
             foreach (var line in lines)
             {
-                string[] result = Regex.Split(line, pattern);
-                var maxT = getTemp(result[2]);
-                var minT = getTemp(result[3]);
+                var result = Regex.Split(line, pattern);
+                var maxT = GetTemp(result[2]);
+                var minT = GetTemp(result[3]);
 
                 var spread = maxT - minT;
                 if (spread < smallestSpread)
@@ -31,18 +31,12 @@ namespace CodeKata.Katas
             }
 
             return dayWithSmallestSpread;
-
-            // For each line, find the difference between 2nd and 3rd column
-
-            // Choose the line with the smallest difference
-
-            // Return the day for that line
         }
 
-        public int getTemp(string temp)
+        private static int GetTemp(string temp)
         {
             var strTemp = temp.Replace("*", "");
-            var numtemp = Int32.Parse(strTemp);
+            var numtemp = int.Parse(strTemp);
             return numtemp;
         }
     }

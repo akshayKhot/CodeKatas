@@ -18,11 +18,17 @@ namespace CodeKata
             Console.WriteLine($"Location of {numberToSearch} is {location}");
         }
 
-        public void Kata04()
+        public void Kata04A()
         {
-            var parser = new WeatherParser();
-            var day = parser.getDayWithSmallestSpread();
-            Console.WriteLine($"The day with the smallest temperature spread is: {day}");
+            var day = WeatherParser.GetDayWithSmallestSpread();
+            Console.WriteLine($"The day with the smallest temperature spread is: {day}");   
         }
+
+        public void Kata04B()
+        {
+            var team = FootballParser.GetTeamWithLowestDifference();
+            Console.WriteLine($"The team with the lowest goal difference is: {team}");
+        }
+        
     }
 }
