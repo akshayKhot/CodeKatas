@@ -10,11 +10,9 @@ namespace CodeKata.Katas
         public static string GetDayWithSmallestSpread(string path)
         {
             var dayWithSmallestSpread = "";
+            var smallestSpread = int.MaxValue;
 
             var lines = Parser.ReadLines(path);
-            
-            var smallestSpread = int.MaxValue;  
-            
             foreach (var line in lines)
             {
                 if (Parser.IsInvalidLine(line)) continue;

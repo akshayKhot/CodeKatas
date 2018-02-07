@@ -11,11 +11,9 @@ namespace CodeKata.Katas
         public static string GetTeamWithLowestDifference(string path)
         {  
             var teamWithMinimumDifference = "";
-            
-            var lines = Parser.ReadLines(path);
-            
             var minimumGoalDifference = int.MaxValue;
             
+            var lines = Parser.ReadLines(path);
             foreach (var line in lines)
             {
                 if (Parser.IsInvalidLine(line)) continue;
