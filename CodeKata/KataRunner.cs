@@ -29,6 +29,18 @@ namespace CodeKata
             var team = FootballParser.GetTeamWithLowestDifference("/Users/akshaykhot/workspace/craftsmanship/CodeKata/CodeKata/Resources/football.txt");
             Console.WriteLine($"The team with the lowest goal difference is: {team}");
         }
-        
+
+        public void Kata05()
+        {
+            var filter = new BloomFilter(int.MaxValue);
+            filter.Add("Akshay");
+            filter.Add("David");
+            filter.Add("Jason");
+            filter.Add("Basecamp");
+            filter.Add("CityView");
+
+            var existJason = filter.Test("Jason");
+            var existsNot = filter.Test("DHH");
+        }
     }
 }

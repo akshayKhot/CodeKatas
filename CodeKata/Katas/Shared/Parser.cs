@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace CodeKata.Katas
+namespace CodeKata.Katas.Shared
 {
     public static class Parser
     {
