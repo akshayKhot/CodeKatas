@@ -41,6 +41,10 @@ namespace CodeKata
 
             var existJason = filter.Test("Jason");
             var existsNot = filter.Test("DHH");
+
+            Console.WriteLine($"Jason exists? {existJason}");
+            Console.WriteLine($"DHH exists? {existsNot}");
+            Console.WriteLine($"David exists? {filter.Test("David")}");
         }
     }
 }

@@ -17,20 +17,33 @@ namespace CodeKata.Katas
 
         public void Add(string word)
         {
-            var hashedValue = GetHashValue(word);
-            _bitArray.Set(hashedValue, true);
+            var md5Hash = GetMd5Hash(word);
+            _bitArray.Set(md5Hash, true);
+
+            var sha256Hash = GetSha256Hash(word);
+            _bitArray.Set(sha256Hash, true);
         }
 
         public bool Test(string word)
         {
-            var hashedValue = GetHashValue(word);
-            return _bitArray.Get(hashedValue);
+            var md5Hash = GetMd5Hash(word);
+            var sha256Hash = GetSha256Hash(word);
+            
+            return _bitArray.Get(md5Hash) && _bitArray.Get(sha256Hash);
         }
 
-        private static int GetHashValue(string word)
+        private static int GetMd5Hash(string word)
         {
             var md5Hasher = MD5.Create();
             var hashed = md5Hasher.ComputeHash(Encoding.UTF8.GetBytes(word));
+            var hashedValue = BitConverter.ToInt32(hashed, 0);
+            return Math.Abs(hashedValue);
+        }
+        
+        private static int GetSha256Hash(string word)
+        {
+            var sha256Hasher = SHA256.Create();
+            var hashed = sha256Hasher.ComputeHash(Encoding.UTF8.GetBytes(word));
             var hashedValue = BitConverter.ToInt32(hashed, 0);
             return Math.Abs(hashedValue);
         }
