@@ -1,5 +1,6 @@
 ﻿using System;
 using CodeKata.Katas;
+using CodeKata.Katas.Shared;
 
 namespace CodeKata
 {
@@ -32,19 +33,22 @@ namespace CodeKata
 
         public void Kata05()
         {
-            var filter = new BloomFilter(int.MaxValue);
-            filter.Add("Akshay");
-            filter.Add("David");
-            filter.Add("Jason");
-            filter.Add("Basecamp");
-            filter.Add("CityView");
+            var filter = Helper.FillBloomFilter("/usr/share/dict/words");
 
-            var existJason = filter.Test("Jason");
-            var existsNot = filter.Test("DHH");
+            while (true)
+            {
+                Console.Write("Enter the word.. ");
+                var word = Console.ReadLine();
+                if(word == "quit")
+                    break;
+                
+                Console.WriteLine(filter.Test(word)
+                    ? $"{word} might be in the dictionary"
+                    : $"{word} doesn't exist for sure");   
+            }
 
-            Console.WriteLine($"Jason exists? {existJason}");
-            Console.WriteLine($"DHH exists? {existsNot}");
-            Console.WriteLine($"David exists? {filter.Test("David")}");
+            Console.WriteLine("Thank you for using the dictionary. Good Bye..");
         }
+        
     }
 }
