@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CodeKata.Katas;
 using CodeKata.Katas.Shared;
 
@@ -33,7 +34,8 @@ namespace CodeKata
 
         public void Kata05()
         {
-            var filter = Helper.FillBloomFilter("/usr/share/dict/words");
+            // need to implement the second part of the bloom filters
+            var filter = Helper.FillBloomFilter();
 
             while (true)
             {
@@ -49,6 +51,13 @@ namespace CodeKata
 
             Console.WriteLine("Thank you for using the dictionary. Good Bye..");
         }
-        
+
+        public void Kata06()
+        {
+            var filter = Helper.FillBloomFilter();
+            var anagram = new AnagramFinder(filter);
+            var wordList = Helper.GetTestWords();
+            anagram.FindAllAnagrams(wordList);
+        }
     }
 }

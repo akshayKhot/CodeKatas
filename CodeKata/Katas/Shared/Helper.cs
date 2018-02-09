@@ -1,23 +1,39 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace CodeKata.Katas.Shared
 {
     public class Helper
     {
-        public static BloomFilter FillBloomFilter(string path)
+        private const string DictionaryPath = "/usr/share/dict/words";
+        
+        public static BloomFilter FillBloomFilter()
         {
             var filter = new BloomFilter(int.MaxValue);
             
-            if (File.Exists(path))
+            var words = PopulateWords();
+            foreach (var word in words)
             {
-                var words = File.ReadAllLines(path);
-                foreach (var word in words)
-                {
-                    filter.Add(word);
-                }
+                filter.Add(word);
             }
-
+            
             return filter;
+        }
+
+        private static IEnumerable<string> PopulateWords()
+        {
+            var words = File.Exists(DictionaryPath) ? 
+                File.ReadAllLines(DictionaryPath) : 
+                new[] { "abc", "def" };
+            
+            return words;
+        }
+
+        public static IEnumerable<string> GetTestWords()
+        {
+            return PopulateWords();
+            //return new string[] { "rwite", "tternpa", "tra" };
         }
     }
 }
