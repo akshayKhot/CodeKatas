@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CodeKata.Katas.Shared
 {
-    public class Helper
+    public static class Helper
     {
         private const string DictionaryPath = "/usr/share/dict/words";
         

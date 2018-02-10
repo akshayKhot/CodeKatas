@@ -20,18 +20,21 @@ namespace CodeKata
             Console.WriteLine($"Location of {numberToSearch} is {location}");
         }
 
+        // Weather
         public void Kata04A()
         {
             var day = WeatherParser.GetDayWithSmallestSpread("/Users/akshaykhot/workspace/craftsmanship/CodeKata/CodeKata/Resources/weather.txt");
             Console.WriteLine($"The day with the smallest temperature spread is: {day}");   
         }
 
+        // Soccer
         public void Kata04B()
         {
             var team = FootballParser.GetTeamWithLowestDifference("/Users/akshaykhot/workspace/craftsmanship/CodeKata/CodeKata/Resources/football.txt");
             Console.WriteLine($"The team with the lowest goal difference is: {team}");
         }
 
+        // Bloom Filters
         public void Kata05()
         {
             // need to implement the second part of the bloom filters
@@ -52,6 +55,7 @@ namespace CodeKata
             Console.WriteLine("Thank you for using the dictionary. Good Bye..");
         }
 
+        // Find anagrams of words in a dictionary
         public void Kata06()
         {
             var filter = Helper.FillBloomFilter();
@@ -59,5 +63,14 @@ namespace CodeKata
             var wordList = Helper.GetTestWords();
             anagram.FindAllAnagrams(wordList);
         }
+
+        // Count the lines of code
+        public void Kata07()
+        {
+            var counter = new LineCounter();
+            var count = counter.CountLinesOfCode("/Users/akshaykhot/workspace/craftsmanship/CodeKata/CodeKata/Katas/FootballParser.cs");
+            Console.WriteLine($"Lines of Code: {count}" );
+        }
+        
     }
 }
